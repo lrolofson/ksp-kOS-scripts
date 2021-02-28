@@ -1,0 +1,74 @@
+//hellolaunch
+
+//First, we'll clear the terminal screen to make it look nice.
+CLEARSCREEN.
+
+//Next, we'll lock our throttle to 100%.
+LOCK THROTTLE TO 1.0. // 1.0 is the max, 0.0 is idle.
+
+//This is our countdown Loop. which cylces from 10 to 0.
+PRINT "T MINUS:".
+FROM {local countdown is 10.} UNTIL countdown = 0 STEP {SET countdown to countdown - 1.} DO{
+    PRINT "..." + countdown.
+    WAIT 1. //pauses the script here for 1 second.
+}
+
+WHEN MAXTHRUST = 0 THEN { // trigger that constantly checks to see if thrust = 0.
+    PRINT "STAGE 0 ACTIVATED.".
+    STAGE.
+    PRESERVE. // keeps WHEN trigger active even after it has been triggered
+}
+
+// Main control loop for ascent. Cycles continuously until APOAPSIS is > 100km.
+// Each cycle, it will check the IF statements inside and perfom them if the
+// conditions are met.
+SET MYSTEER TO HEADING(90,90).
+LOCK STEERING TO MYSTEER. // FROM NOW ON WE'LL BE ABLE TO CHANGE STEERING JUST BY ASSIGNING A NEW VALUE TO MYSTEER.
+UNTIL SHIP:APOAPSIS > 100000 {
+    // for the initial ascent we want to point straight up and rolled due east
+    IF SHIP:VELOCITY:SURFACE:MAG < 100 {
+        // sets steering 90 deg up and yawed to the compass heading of 90
+        SET MYSTEER TO HEADING(90,90).
+    } ELSE IF SHIP:VELOCITY:SURFACE:MAG >= 100 AND SHIP:VELOCITY:SURFACE:MAG < 200 {
+        SET MYSTEER TO HEADING(90,80).
+        PRINT"PITCHING TO 80 DEGREES" AT(0,15).
+        PRINT ROUND(SHIP:APOAPSIS,0) AT(0,16).
+    } ELSE IF SHIP:VELOCITY:SURFACE:MAG >= 200 AND SHIP:VELOCITY:SURFACE:MAG < 300 {
+        SET MYSTEER TO HEADING (90,70).
+        PRINT "PITCHING TO 70 DEGREES" AT(0,15).
+        PRINT ROUND(SHIP:APOAPSIS,0) AT(0,16).
+    } ELSE IF SHIP:VELOCITY:SURFACE:MAG >= 300 AND SHIP:VELOCITY:SURFACE:MAG < 400 {
+        SET MYSTEER TO HEADING (90,60).
+        PRINT "PITCHING TO 60 DEGREES" AT(0,15).
+        PRINT ROUND(SHIP:APOAPSIS,0) AT(0,16).
+    } ELSE IF SHIP:VELOCITY:SURFACE:MAG >= 400 AND SHIP:VELOCITY:SURFACE:MAG < 500 {
+        SET MYSTEER TO HEADING (90,50).
+        PRINT "PITCHING TO 50 DEGREES" AT(0,15).
+        PRINT ROUND(SHIP:APOAPSIS,0) AT(0,16).
+    } ELSE IF SHIP:VELOCITY:SURFACE:MAG >= 500 AND SHIP:VELOCITY:SURFACE:MAG < 600 {
+        SET MYSTEER TO HEADING (90,40).
+        PRINT "PITCHING TO 40 DEGREES" AT(0,15).
+        PRINT ROUND(SHIP:APOAPSIS,0) AT(0,16).
+    } ELSE IF SHIP:VELOCITY:SURFACE:MAG >= 500 AND SHIP:VELOCITY:SURFACE:MAG < 600 {
+        SET MYSTEER TO HEADING (90,40).
+        PRINT "PITCHING TO 40 DEGREES" AT(0,15).
+        PRINT ROUND(SHIP:APOAPSIS,0) AT(0,16).
+    } ELSE IF SHIP:VELOCITY:SURFACE:MAG >= 600 AND SHIP:VELOCITY:SURFACE:MAG < 700 {
+        SET MYSTEER TO HEADING (90,30).
+        PRINT "PITCHING TO 30 DEGREES" AT(0,15).
+        PRINT ROUND(SHIP:APOAPSIS,0) AT(0,16).
+    } ELSE IF SHIP:VELOCITY:SURFACE:MAG >= 700 AND SHIP:VELOCITY:SURFACE:MAG < 800 {
+        SET MYSTEER TO HEADING (90,20).
+        PRINT "PITCHING TO 20 DEGREES" AT(0,15).
+        PRINT ROUND(SHIP:APOAPSIS,0) AT(0,16).
+    } ELSE IF SHIP:VELOCITY:SURFACE:MAG >= 800 {
+        SET MYSTEER TO HEADING(90,10).
+        PRINT "PITCHING TO 10 DEGREES" AT(0,15).
+        PRINT ROUND(SHIP:APOAPSIS,0) AT (0,16).
+    }.
+}.
+
+PRINT "100KM APOAPSIS ACHIEVED, CUTTING THROTTLE.".
+
+LOCK THROTTLE TO 0.
+SET SHIP:CONTROL:PILOTMAINTHROTTLE TO 0.

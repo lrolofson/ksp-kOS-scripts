@@ -4,6 +4,10 @@ This is a collection of scripts I wrote to launch a rocket into Low Kerbin Orbit
 
 Fly safe, and have fun!
 
+UPDATE 8/30/2022:
+
+The bug bit me again, and this project is getting unmothballed. Expect craft files and scripts. The first project is going to be a small communications satellite with scripts and a launch schedule to set up the cutest little equatorial relay system for use with RemoteTech.
+
 CONTENTS
 ========
 * gravityturn.ks -- ***you most likely want this one.*** it's the most complete script, and puts a simple 2-stage rocket into LKO

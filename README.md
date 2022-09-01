@@ -12,6 +12,7 @@ CONTENTS
 ========
 * comSatLxA.craft   -- slightly modified version of stock ComSat Lx craft
 * comSatLxA-boot.ks -- most recent script, goes with comSatLxA.craft
+<iframe width="560" height="315" src="https://www.youtube.com/embed/v4bVrRcbPKo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 * gravityturn.ks    -- puts a simple 2-stage rocket into LKO
 * gravturn2.ks      -- refactored version of gravityturn.ks that was started but never finished
 * hello.ks          -- does a countdown and then says hello

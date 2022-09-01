@@ -8,6 +8,19 @@ UPDATE 8/30/2022:
 
 The bug bit me again, and this project is getting unmothballed. Expect craft files and scripts. The first project is going to be a small communications satellite with scripts and a launch schedule to set up the cutest little equatorial relay system for use with RemoteTech.
 
+## instructions
+
+I am not going to put a whole lot of work into the documentation here. If you need clarification, please open an issue called "your instructions suck and i need help"  or something.
+
+1. Make sure KSP is installed.
+2. Make sure kOS is installed.
+3. Open the KSP game directory and place the desired .craft file in ./ships
+4. Place the desired script file in ./ships/scripts/, making sure to keep the .ks file extension intact
+5. Launch KSP and get to the VAB.
+6. Load the craft.
+7. Hit the launch button.
+8. Go!
+
 CONTENTS
 ========
 * comSatLxA.craft   -- slightly modified version of stock ComSat Lx craft

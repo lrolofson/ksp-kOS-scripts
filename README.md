@@ -11,8 +11,7 @@ The bug bit me again, and this project is getting unmothballed. Expect craft fil
 CONTENTS
 ========
 * comSatLxA.craft   -- slightly modified version of stock ComSat Lx craft
-* comSatLxA-boot.ks -- most recent script, goes with comSatLxA.craft
- * https://www.youtube.com/watch?v=v4bVrRcbPKo
+* comSatLxA-boot.ks -- most recent script, goes with comSatLxA.craft. https://www.youtube.com/watch?v=v4bVrRcbPKo
 * gravityturn.ks    -- puts a simple 2-stage rocket into LKO
 * gravturn2.ks      -- refactored version of gravityturn.ks that was started but never finished
 * hello.ks          -- does a countdown and then says hello

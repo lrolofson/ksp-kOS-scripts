@@ -63,7 +63,7 @@ PRINT "GRAVITY TURN START.".
 UNTIL APOAPSIS > LOW_DRAG_ALTITUDE {
     SET MYSTEER TO SRFPROGRADE.
     IF ETA:APOAPSIS > 0 {
-    SET MYTHROTTLE TO ((SQRT(40/eta:apoapsis))^(1+(eta:apoapsis))). // not entirely sure why this works, but it works
+    SET MYTHROTTLE TO ((SQRT(40/eta:apoapsis))^(1+(eta:apoapsis))). // i don't really understand what i did here
     }
     PRINT "THROTTLE SET: " + ROUND(MYTHROTTLE,2) AT (0,8).
     PRINT "     ETA APO: " + ROUND(ETA:APOAPSIS,2) AT (0,10).
@@ -86,8 +86,7 @@ UNTIL ALTITUDE > LOW_DRAG_ALTITUDE {
     PRINT "       PITCH: " + ROUND(SHIP:PROGRADE:PITCH,2) AT (0,15).
 }
 
-UNTIL ALTITUDE > SPACE_ALTITUDE { // my dumb ass forgetting to change the parameters for the final and causing the script to try to divide by zero once it hit its 87k apoapsis
-    SET MYSTEER TO PROGRADE.
+UNTIL ALTITUDE > SPACE_ALTITUDE { // be careful if modifying this loop, it's easy to induce a divide by zero
     IF APOAPSIS < SPACE_ALTITUDE {
         SET MYTHROTTLE TO (SQRT(50-(ALTITUDE/1000)/APOAPSIS)^(1+(ALTITUDE/1000))).
 
@@ -136,7 +135,7 @@ PRINT "CIRCULARIZING...".
 
 UNTIL PERIAPSIS > TARGET_PERIAPSIS {
     SET MYSTEER TO PROGRADE.
-    SET MYTHROTTLE TO ((SQRT(15/eta:apoapsis))^(1+(eta:apoapsis))). //if target eta to apoapse is too low, spacecraft will reach apoapse, making the ETA zero, meaning the program will divide by zero and attempt to push NaN into the stack, leading to circularization failure
+    SET MYTHROTTLE TO ((SQRT(15/eta:apoapsis))^(1+(eta:apoapsis))). // if target eta to apoapse is too low, spacecraft will reach apoapse, making the ETA zero, meaning the program will divide by zero and attempt to push NaN into the stack, leading to circularization failure
     PRINT "THROTTLE SET: " + ROUND(MYTHROTTLE,2) AT (0,8).
     PRINT "     ETA APO: " + ROUND(ETA:APOAPSIS,2) AT (0,10).
     PRINT "     CUR APO: " + ROUND(APOAPSIS,2) AT (0,11).

@@ -87,6 +87,7 @@ UNTIL ALTITUDE > LOW_DRAG_ALTITUDE {
 }
 
 UNTIL ALTITUDE > SPACE_ALTITUDE { // be careful if modifying this loop, it's easy to induce a divide by zero
+    SET MYSTEER TO PROGRADE.
     IF APOAPSIS < SPACE_ALTITUDE {
         SET MYTHROTTLE TO (SQRT(50-(ALTITUDE/1000)/APOAPSIS)^(1+(ALTITUDE/1000))).
 

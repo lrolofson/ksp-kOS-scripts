@@ -11,6 +11,13 @@
 //| discrete piece of a larger network. it may have been advantageous to make
 //| a single launch vehicle which utilized a synchronous orbit to release
 //| multiple craft and then deorbit itself.
+//|
+//| todo:
+//| - consider splitting the throttle smoothing function into multiple 
+//|   variables for readability and maintainability, e.g. 
+//|     initial_factor = sqrt(40/eta:apoapsis)
+//|     throttle_factor = initial_factor ^ (1 + eta:apoapsis)
+//|     SET MYTHROTTLE TO throttle_factor
 //=============================================================================
 
 // SETTING THINGS UP

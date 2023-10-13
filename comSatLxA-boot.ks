@@ -15,9 +15,10 @@
 //| todo:
 //| - consider splitting the throttle smoothing function into multiple 
 //|   variables for readability and maintainability, e.g. 
-//|     initial_factor = sqrt(40/eta:apoapsis)
-//|     throttle_factor = initial_factor ^ (1 + eta:apoapsis)
-//|     SET MYTHROTTLE TO throttle_factor
+//|     SET target_eta_apoapsis TO 40.
+//|     SET initial_factor TO sqrt(target_eta_apoapsis/eta:apoapsis).
+//|     SET throttle_factor TO initial_factor ^ (1 + eta:apoapsis).
+//|     SET MYTHROTTLE TO throttle_factor.
 //=============================================================================
 
 // SETTING THINGS UP
